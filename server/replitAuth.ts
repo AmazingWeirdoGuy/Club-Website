@@ -1,3 +1,5 @@
+// === Auth / OIDC bootstrap (portable, no hard REPLIT_DOMAINS requirement) ===
+
 import * as client from "openid-client";
 import { Strategy, type VerifyFunction } from "openid-client/passport";
 
@@ -8,10 +10,30 @@ import memoize from "memoizee";
 import connectPg from "connect-pg-simple";
 import { storage } from "./storage";
 
-if (!process.env.REPLIT_DOMAINS) {
-  throw new Error("Environment variable REPLIT_DOMAINS not provided");
+// ---- Allowed domains (portable) ----
+// Prefer a generic ALLOWED_ORIGINS (comma-separated), fallback to REPLIT_DOMAINS if present.
+// If neither is set, we *do not* crash; auth will be considered disabled.
+const rawDomains =
+  process.env.ALLOWED_ORIGINS ??
+  process.env.REPLIT_DOMAINS ??
+  "";
+
+const allowedDomains = rawDomains
+  .split(",")
+  .map(s => s.trim())
+  .filter(Boolean);
+
+const AUTH_ENABLED = allowedDomains.length > 0 && !!process.env.REPL_ID;
+
+// Helpful warning so you know why login isn’t wired up
+if (!AUTH_ENABLED) {
+  console.warn(
+    "⚠️ Auth disabled: Set ALLOWED_ORIGINS (comma-separated) and REPL_ID to enable OIDC login.\n" +
+    "   Example ALLOWED_ORIGINS: https://your-frontend.vercel.app,http://localhost:5173"
+  );
 }
 
+// ---- OIDC discovery (memoized) ----
 const getOidcConfig = memoize(
   async () => {
     return await client.discovery(
@@ -22,6 +44,7 @@ const getOidcConfig = memoize(
   { maxAge: 3600 * 1000 }
 );
 
+// ---- Session store (Postgres) ----
 export function getSession() {
   const sessionTtl = 7 * 24 * 60 * 60 * 1000; // 1 week
   const pgStore = connectPg(session);
@@ -38,12 +61,13 @@ export function getSession() {
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: process.env.NODE_ENV === "production",
       maxAge: sessionTtl,
     },
   });
 }
 
+// ---- helpers ----
 function updateUserSession(
   user: any,
   tokens: client.TokenEndpointResponse & client.TokenEndpointResponseHelpers
@@ -54,9 +78,7 @@ function updateUserSession(
   user.expires_at = user.claims?.exp;
 }
 
-async function upsertUser(
-  claims: any,
-) {
+async function upsertUser(claims: any) {
   await storage.upsertUser({
     id: claims["sub"],
     email: claims["email"],
@@ -66,11 +88,27 @@ async function upsertUser(
   });
 }
 
+// ---- main wiring ----
 export async function setupAuth(app: Express) {
   app.set("trust proxy", 1);
   app.use(getSession());
   app.use(passport.initialize());
   app.use(passport.session());
+
+  // If auth is disabled (no domains / REPL_ID), don’t wire OIDC strategies.
+  if (!AUTH_ENABLED) {
+    // Provide graceful endpoints so routes don’t 404
+    app.get("/api/login", (_req, res) =>
+      res.status(503).json({ message: "Login is not configured on this deployment." })
+    );
+    app.get("/api/callback", (_req, res) =>
+      res.status(503).json({ message: "Login is not configured on this deployment." })
+    );
+    app.get("/api/logout", (_req, res) =>
+      res.status(200).json({ message: "Already logged out (auth disabled)." })
+    );
+    return;
+  }
 
   const config = await getOidcConfig();
 
@@ -78,14 +116,14 @@ export async function setupAuth(app: Express) {
     tokens: client.TokenEndpointResponse & client.TokenEndpointResponseHelpers,
     verified: passport.AuthenticateCallback
   ) => {
-    const user = {};
+    const user: any = {};
     updateUserSession(user, tokens);
     await upsertUser(tokens.claims());
     verified(null, user);
   };
 
-  for (const domain of process.env
-    .REPLIT_DOMAINS!.split(",")) {
+  // Register one strategy per allowed domain
+  for (const domain of allowedDomains) {
     const strategy = new Strategy(
       {
         name: `replitauth:${domain}`,
@@ -93,7 +131,7 @@ export async function setupAuth(app: Express) {
         scope: "openid email profile offline_access",
         callbackURL: `https://${domain}/api/callback`,
       },
-      verify,
+      verify
     );
     passport.use(strategy);
   }
@@ -127,7 +165,11 @@ export async function setupAuth(app: Express) {
   });
 }
 
+// ---- guard for protected routes ----
 export const isAuthenticated: RequestHandler = async (req, res, next) => {
+  // If auth is disabled, let everything through (or change to 401 if you prefer)
+  if (!AUTH_ENABLED) return next();
+
   const user = req.user as any;
 
   if (!req.isAuthenticated() || !user.expires_at) {
@@ -141,8 +183,7 @@ export const isAuthenticated: RequestHandler = async (req, res, next) => {
 
   const refreshToken = user.refresh_token;
   if (!refreshToken) {
-    res.status(401).json({ message: "Unauthorized" });
-    return;
+    return res.status(401).json({ message: "Unauthorized" });
   }
 
   try {
@@ -150,8 +191,7 @@ export const isAuthenticated: RequestHandler = async (req, res, next) => {
     const tokenResponse = await client.refreshTokenGrant(config, refreshToken);
     updateUserSession(user, tokenResponse);
     return next();
-  } catch (error) {
-    res.status(401).json({ message: "Unauthorized" });
-    return;
+  } catch {
+    return res.status(401).json({ message: "Unauthorized" });
   }
 };
