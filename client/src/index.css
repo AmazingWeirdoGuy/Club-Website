@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Beo Font Family */
+@font-face {
+  font-family: 'Beo';
+  src: url('/fonts/beo_regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Beo';
+  src: url('/fonts/beo_italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Beo';
+  src: url('/fonts/beo-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Beo';
+  src: url('/fonts/beo-boldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Premium Monochrome Palette */
+  --ink: hsl(210, 12%, 4%);
+  --graphite: hsl(210, 8%, 15%);
+  --slate: hsl(210, 6%, 25%);
+  --mist: hsl(210, 4%, 85%);
+  --paper: hsl(0, 0%, 100%);
+  
+  /* Premium Accent */
+  --primary-blue: hsl(221, 83%, 53%);
+  --secondary-teal: hsl(180, 65%, 45%);
+  
+  /* Luxury Shadows - Enhanced for better separation */
+  --shadow-hairline: 0 1px 3px 0 rgb(0 0 0 / 0.08);
+  --shadow-subtle: 0 3px 12px 0 rgb(0 0 0 / 0.1);
+  --shadow-medium: 0 6px 20px 0 rgb(0 0 0 / 0.15);
+  --shadow-elevated: 0 10px 30px 0 rgb(0 0 0 / 0.2);
+  
+  /* Premium Motion */
+  --ease-luxury: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration-fast: 200ms;
+  --duration-medium: 300ms;
+
+  /* Design System Tokens - Enhanced contrast */
+  --background: var(--paper);
+  --background-subtle: hsl(210, 20%, 98%);
+  --background-muted: hsl(210, 15%, 96%);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-subtle: hsl(210, 25%, 97%);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--primary-blue);
+  --primary-foreground: var(--paper);
+  --secondary: var(--mist);
+  --secondary-foreground: var(--ink);
+  --muted: var(--mist);
+  --muted-foreground: var(--slate);
+  --accent: var(--secondary-teal);
+  --accent-foreground: var(--paper);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: var(--paper);
+  --border: hsl(210, 8%, 88%);
+  --border-subtle: hsl(210, 4%, 94%);
+  --input: hsl(210, 8%, 90%);
+  --ring: var(--primary-blue);
+  --chart-1: var(--primary-blue);
+  --chart-2: var(--secondary-teal);
+  --chart-3: hsl(42, 93%, 56%);
+  --chart-4: hsl(147, 79%, 42%);
+  --chart-5: hsl(341, 75%, 51%);
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--primary-blue);
+  --sidebar-primary-foreground: var(--paper);
+  --sidebar-accent: var(--mist);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: hsl(210, 4%, 92%);
+  --sidebar-ring: var(--primary-blue);
+  --font-sans: Montserrat;
+  --font-serif: Architects Daughter;
+  --font-mono: Architects Daughter;
+  --font-display: 'Beo';
+  --radius: 0.75rem;
+  --shadow-2xs: 0px 2px 0px 0px hsl(221.2, 83.2%, 53.3% / 0.00);
+  --shadow-xs: 0px 2px 0px 0px hsl(221.2, 83.2%, 53.3% / 0.00);
+  --shadow-sm: 0px 2px 0px 0px hsl(221.2, 83.2%, 53.3% / 0.00), 0px 1px 2px -1px hsl(221.2, 83.2%, 53.3% / 0.00);
+  --shadow: 0px 2px 0px 0px hsl(221.2, 83.2%, 53.3% / 0.00), 0px 1px 2px -1px hsl(221.2, 83.2%, 53.3% / 0.00);
+  --shadow-md: 0px 2px 0px 0px hsl(221.2, 83.2%, 53.3% / 0.00), 0px 2px 4px -1px hsl(221.2, 83.2%, 53.3% / 0.00);
+  --shadow-lg: 0px 2px 0px 0px hsl(221.2, 83.2%, 53.3% / 0.00), 0px 4px 6px -1px hsl(221.2, 83.2%, 53.3% / 0.00);
+  --shadow-xl: 0px 2px 0px 0px hsl(221.2, 83.2%, 53.3% / 0.00), 0px 8px 10px -1px hsl(221.2, 83.2%, 53.3% / 0.00);
+  --shadow-2xl: 0px 2px 0px 0px hsl(221.2, 83.2%, 53.3% / 0.00);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  /* Dark Mode: Sophisticated Graphite */
+  --background: var(--ink);
+  --background-subtle: hsl(210, 12%, 6%);
+  --background-muted: hsl(210, 10%, 8%);
+  --foreground: var(--paper);
+  --card: var(--graphite);
+  --card-subtle: hsl(210, 8%, 18%);
+  --card-foreground: var(--paper);
+  --popover: var(--graphite);
+  --popover-foreground: var(--paper);
+  --primary: var(--primary-blue);
+  --primary-foreground: var(--paper);
+  --secondary: var(--slate);
+  --secondary-foreground: var(--paper);
+  --muted: var(--slate);
+  --muted-foreground: var(--mist);
+  --accent: var(--secondary-teal);
+  --accent-foreground: var(--paper);
+  --destructive: hsl(0, 63%, 31%);
+  --destructive-foreground: var(--paper);
+  --border: hsl(210, 6%, 30%);
+  --border-subtle: hsl(210, 6%, 20%);
+  --input: var(--slate);
+  --ring: var(--primary-blue);
+  --sidebar: var(--graphite);
+  --sidebar-foreground: var(--paper);
+  --sidebar-primary: var(--primary-blue);
+  --sidebar-primary-foreground: var(--paper);
+  --sidebar-accent: var(--slate);
+  --sidebar-accent-foreground: var(--paper);
+  --sidebar-border: var(--slate);
+  --sidebar-ring: var(--primary-blue);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  /* Premium Typography System */
+  .font-display {
+    font-weight: 700 !important;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    -webkit-text-stroke: 0.15px currentColor;
+  }
+
+  /* Large headings - refined and elegant */
+  h1.font-display, h2.font-display {
+    letter-spacing: 0.02em;
+    font-weight: 700 !important;
+    -webkit-text-stroke: 0.2px currentColor;
+    line-height: 1.1;
+  }
+
+  /* Logo - sophisticated branding */
+  .font-display.text-xl {
+    letter-spacing: 0.05em;
+    -webkit-text-stroke: 0.15px currentColor;
+  }
+
+  /* Premium Motion System */
+  .luxury-hover {
+    transition: all var(--duration-fast) var(--ease-luxury);
+  }
+
+  .luxury-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+  }
+
+  .luxury-press:active {
+    transform: scale(0.98);
+    transition: transform 100ms ease-out;
+  }
+
+  /* Custom Animations */
+  @keyframes luxury-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes luxury-scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .luxury-fade-in {
+    animation: luxury-fade-in var(--duration-medium) var(--ease-luxury) both;
+  }
+
+  .luxury-scale-in {
+    animation: luxury-scale-in var(--duration-medium) var(--ease-luxury) both;
+  }
+
+
+  /* Premium Texture Effects */
+  .texture-subtle {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+  
+  .texture-noise {
+    background-image: 
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+  }
+
+  /* Enhanced Surface Hierarchy */
+  .surface-elevated {
+    background: hsl(from var(--background) h s calc(l + 1%));
+    border: 1px solid var(--border-subtle);
+  }
+  
+  .surface-sunken {
+    background: hsl(from var(--background) h s calc(l - 1%));
+    border: 1px solid var(--border);
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .luxury-hover,
+    .luxury-press,
+    .luxury-fade-in,
+    .luxury-scale-in {
+      animation: none;
+      transition: none;
+    }
+  }
+}
+
+/* Print-friendly styles for medical information */
+@media print {
+  /* Hide navigation and non-essential elements when printing */
+  header, footer, nav, .no-print {
+    display: none !important;
+  }
+
+  /* Optimize page layout for print */
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure content fits well on printed pages */
+  body {
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+    margin: 0.5in !important;
+  }
+
+  /* Make headings stand out in print */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    font-weight: bold !important;
+    margin-top: 1em !important;
+    margin-bottom: 0.5em !important;
+  }
+
+  /* Ensure proper spacing for medical content */
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Handle images appropriately */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+  }
+
+  /* Style links to show URLs */
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+
+  /* Remove hover effects and animations for print */
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* Ensure good contrast for text */
+  .text-primary, .text-blue-600, .text-teal-600, .text-green-600 {
+    color: #000 !important;
+  }
+
+  /* Page breaks for better content flow */
+  .page-break {
+    page-break-before: always;
+  }
+
+  /* Style cards and containers for print */
+  .card, .bg-white, .bg-gray-50, .bg-blue-50, .bg-green-50, .bg-teal-50 {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    border-radius: 0 !important;
+    margin-bottom: 1em !important;
+    padding: 1em !important;
+  }
+}
+
+/* Custom gradient utilities */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}

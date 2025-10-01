@@ -1,0 +1,363 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISB Medical Society</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    popover: {
+                        DEFAULT: "var(--popover)",
+                        foreground: "var(--popover-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["Montserrat", "sans-serif"],
+                }
+            },
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --background: hsl(0 0% 100%);
+            --foreground: hsl(210 6% 21%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(210 6% 21%);
+            --popover: hsl(0 0% 100%);
+            --popover-foreground: hsl(210 6% 21%);
+            --primary: hsl(194 43% 78%);
+            --primary-foreground: hsl(210 6% 21%);
+            --secondary: hsl(210 6% 21%);
+            --secondary-foreground: hsl(0 0% 100%);
+            --muted: hsl(194 43% 78%);
+            --muted-foreground: hsl(210 6% 21%);
+            --accent: hsl(194 43% 78%);
+            --accent-foreground: hsl(210 6% 21%);
+            --destructive: hsl(0 84% 60%);
+            --destructive-foreground: hsl(0 0% 100%);
+            --border: hsl(0 0% 87%);
+            --input: hsl(0 0% 87%);
+            --ring: hsl(194 43% 78%);
+            --radius: 8px;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(rgba(54, 69, 79, 0.6), rgba(54, 69, 79, 0.6));
+        }
+        
+        .news-item:hover .news-image {
+            transform: scale(1.05);
+        }
+        
+        .hero-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .news-image {
+            transition: transform 0.4s ease-in-out;
+        }
+        
+        .hero-image {
+            transition: transform 0.6s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans">
+    <!-- @COMPONENT: Header -->
+    <header class="bg-secondary text-secondary-foreground shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+            <div class="flex justify-between items-center py-5">
+                <h1 class="text-2xl lg:text-3xl font-bold text-secondary-foreground">
+                    ISB Medical Society
+                </h1>
+                
+                <!-- @COMPONENT: Navigation -->
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li>
+                            <a href="#" class="text-secondary-foreground font-semibold px-3 py-2 rounded-md transition-all duration-300 hover:bg-primary hover:text-primary-foreground">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-secondary-foreground font-semibold px-3 py-2 rounded-md transition-all duration-300 hover:bg-primary hover:text-primary-foreground">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-secondary-foreground font-semibold px-3 py-2 rounded-md transition-all duration-300 hover:bg-primary hover:text-primary-foreground">
+                                News
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-secondary-foreground font-semibold px-3 py-2 rounded-md transition-all duration-300 hover:bg-primary hover:text-primary-foreground">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-secondary-foreground">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- @COMPONENT: Hero Section -->
+    <section class="relative h-screen overflow-hidden">
+        <!-- Medical students studying in modern library setting -->
+        <div class="hero-image absolute inset-0 bg-cover bg-center bg-no-repeat" 
+             style="background-image: url('https://pixabay.com/get/gf0b5191acccf93d1044cbd3a0250763f61642f4aa4c89ac19db90e358d13d377296d9867f23b51378da216d746c17c109e6089d1e4c350ba85c9663409b521b9_1280.jpg');">
+        </div>
+        
+        <div class="hero-overlay absolute inset-0 flex items-center justify-center">
+            <div class="text-center text-white px-4 max-w-4xl">
+                <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                    Future Medical Leaders
+                </h2>
+                <p class="text-xl lg:text-2xl mb-8 leading-relaxed opacity-90">
+                    Join a community of passionate students dedicated to advancing healthcare and medical education
+                </p>
+                <button class="bg-primary text-primary-foreground px-8 py-4 rounded-lg text-lg font-semibold 
+                             transition-all duration-300 hover:bg-opacity-90 hover:transform hover:scale-105 
+                             shadow-lg hover:shadow-xl">
+                    Join Our Society
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero Section -->
+
+    <!-- @COMPONENT: Mission Statement -->
+    <section class="bg-primary py-16 lg:py-20">
+        <div class="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-8 text-primary-foreground">
+                Our Mission
+            </h2>
+            <p class="text-lg lg:text-xl leading-relaxed text-primary-foreground max-w-3xl mx-auto">
+                The ISB Medical Society is dedicated to fostering a community of aspiring medical professionals, 
+                providing educational resources, volunteer opportunities, and a platform for discussion and 
+                collaboration. We bridge the gap between academic learning and real-world medical practice.
+            </p>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Mission Statement -->
+
+    <!-- @COMPONENT: News Section -->
+    <section class="py-16 lg:py-20 bg-background">
+        <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+            <h2 class="text-4xl lg:text-5xl font-bold text-center mb-12 text-foreground">
+                Latest News
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- @MAP: newsItems.map(item => ( -->
+                <!-- News Item 1 -->
+                <div class="news-item bg-card border border-border rounded-lg overflow-hidden shadow-lg 
+                           transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <!-- Healthcare professionals in action during workshop -->
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                         alt="First Aid Workshop" 
+                         class="news-image w-full h-48 object-cover">
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-card-foreground">
+                            Workshop on First Aid Basics
+                        </h3>
+                        <p class="text-muted-foreground mb-4 leading-relaxed">
+                            Join us for an interactive workshop to learn essential first aid techniques. Open to all students!
+                        </p>
+                        <a href="#" class="inline-block bg-primary text-primary-foreground px-6 py-2 rounded-md 
+                                         font-semibold transition-all duration-300 hover:bg-secondary hover:text-secondary-foreground">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- News Item 2 -->
+                <div class="news-item bg-card border border-border rounded-lg overflow-hidden shadow-lg 
+                           transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <!-- Medical professional giving presentation to students -->
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                         alt="Guest Speaker Dr. Anya Sharma" 
+                         class="news-image w-full h-48 object-cover">
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-card-foreground">
+                            Guest Speaker: Dr. Anya Sharma
+                        </h3>
+                        <p class="text-muted-foreground mb-4 leading-relaxed">
+                            We are thrilled to host Dr. Anya Sharma, a renowned cardiologist, who will share her experiences.
+                        </p>
+                        <a href="#" class="inline-block bg-primary text-primary-foreground px-6 py-2 rounded-md 
+                                         font-semibold transition-all duration-300 hover:bg-secondary hover:text-secondary-foreground">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- News Item 3 -->
+                <div class="news-item bg-card border border-border rounded-lg overflow-hidden shadow-lg 
+                           transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <!-- Students volunteering at healthcare facility -->
+                    <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                         alt="Volunteer Opportunity at Local Clinic" 
+                         class="news-image w-full h-48 object-cover">
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-card-foreground">
+                            Volunteer Opportunity: Local Clinic
+                        </h3>
+                        <p class="text-muted-foreground mb-4 leading-relaxed">
+                            Make a difference in our community by volunteering at the local health clinic. Sign up now!
+                        </p>
+                        <a href="#" class="inline-block bg-primary text-primary-foreground px-6 py-2 rounded-md 
+                                         font-semibold transition-all duration-300 hover:bg-secondary hover:text-secondary-foreground">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- News Item 4 -->
+                <div class="news-item bg-card border border-border rounded-lg overflow-hidden shadow-lg 
+                           transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <!-- Medical school fair with students and university representatives -->
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250" 
+                         alt="Medical School Fair" 
+                         class="news-image w-full h-48 object-cover">
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-card-foreground">
+                            Upcoming Medical School Fair
+                        </h3>
+                        <p class="text-muted-foreground mb-4 leading-relaxed">
+                            Explore your future in medicine at our annual medical school fair. Representatives from top universities will be present.
+                        </p>
+                        <a href="#" class="inline-block bg-primary text-primary-foreground px-6 py-2 rounded-md 
+                                         font-semibold transition-all duration-300 hover:bg-secondary hover:text-secondary-foreground">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: News Section -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="bg-secondary text-secondary-foreground py-12 mt-16">
+        <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-bold mb-4">ISB Medical Society</h3>
+                    <p class="text-sm opacity-90 leading-relaxed">
+                        Fostering the next generation of medical professionals through education, community, and service.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Events</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Membership</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex justify-center md:justify-end space-x-4 mb-4">
+                        <a href="#" class="hover:text-primary transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="hover:text-primary transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="hover:text-primary transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                    <p class="text-xs opacity-75">
+                        email@isbmedsociety.org
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 mt-8 pt-6 text-center">
+                <p class="text-sm opacity-75">
+                    &copy; 2024 ISB Medical Society. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        // TODO: Implement mobile menu toggle functionality
+        // TODO: Implement smooth scrolling for navigation links
+        // TODO: Add form validation for contact forms
+        // TODO: Implement news filtering and search functionality
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('ISB Medical Society website loaded successfully!');
+            
+            // Mobile menu toggle (placeholder for future implementation)
+            const mobileMenuButton = document.querySelector('button');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    // TODO: Toggle mobile menu visibility
+                    console.log('Mobile menu toggle clicked');
+                });
+            }
+            
+            // Smooth hover effects are handled by CSS
+            // Additional JavaScript interactions can be added here
+        });
+    </script>
+</body>
+</html>

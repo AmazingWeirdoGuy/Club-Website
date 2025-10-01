@@ -1,0 +1,480 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISB MedSociety - Healthcare Education & Advocacy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            borderRadius: {
+              lg: "var(--radius)",
+              md: "calc(var(--radius) - 2px)",
+              sm: "calc(var(--radius) - 4px)",
+            },
+            colors: {
+              background: "var(--background)",
+              foreground: "var(--foreground)",
+              card: {
+                DEFAULT: "var(--card)",
+                foreground: "var(--card-foreground)",
+              },
+              popover: {
+                DEFAULT: "var(--popover)",
+                foreground: "var(--popover-foreground)",
+              },
+              primary: {
+                DEFAULT: "var(--primary)",
+                foreground: "var(--primary-foreground)",
+              },
+              secondary: {
+                DEFAULT: "var(--secondary)",
+                foreground: "var(--secondary-foreground)",
+              },
+              muted: {
+                DEFAULT: "var(--muted)",
+                foreground: "var(--muted-foreground)",
+              },
+              accent: {
+                DEFAULT: "var(--accent)",
+                foreground: "var(--accent-foreground)",
+              },
+              destructive: {
+                DEFAULT: "var(--destructive)",
+                foreground: "var(--destructive-foreground)",
+              },
+              border: "var(--border)",
+              input: "var(--input)",
+              ring: "var(--ring)",
+            },
+            fontFamily: {
+              sans: ["var(--font-sans)"],
+            }
+          },
+        }
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+      :root {
+        --background: hsl(0 0% 100%);
+        --foreground: hsl(222.2 84% 4.9%);
+        --card: hsl(0 0% 100%);
+        --card-foreground: hsl(222.2 84% 4.9%);
+        --popover: hsl(0 0% 100%);
+        --popover-foreground: hsl(222.2 84% 4.9%);
+        --primary: hsl(210 100% 56%);
+        --primary-foreground: hsl(210 40% 98%);
+        --secondary: hsl(210 40% 96%);
+        --secondary-foreground: hsl(222.2 84% 4.9%);
+        --muted: hsl(210 40% 96%);
+        --muted-foreground: hsl(215.4 16.3% 46.9%);
+        --accent: hsl(210 40% 96%);
+        --accent-foreground: hsl(222.2 84% 4.9%);
+        --destructive: hsl(0 84.2% 60.2%);
+        --destructive-foreground: hsl(210 40% 98%);
+        --border: hsl(214.3 31.8% 91.4%);
+        --input: hsl(214.3 31.8% 91.4%);
+        --ring: hsl(221.2 83.2% 53.3%);
+        --radius: 0.5rem;
+        --font-sans: 'Inter', sans-serif;
+      }
+      
+      body {
+        font-family: var(--font-sans);
+      }
+      
+      .hero-gradient {
+        background: linear-gradient(135deg, #E3F2FD 0%, #F0F8FF 100%);
+      }
+      
+      .mission-box-1 {
+        background: linear-gradient(135deg, #E1F5FE 0%, #B3E5FC 100%);
+      }
+      
+      .mission-box-2 {
+        background: linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%);
+      }
+      
+      .mission-box-3 {
+        background: linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 100%);
+      }
+    </style>
+</head>
+<body class="bg-background text-foreground">
+    <!-- Header Navigation -->
+    <header class="bg-white border-b border-border sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-user-md text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-primary">ISB MedSociety</span>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-sm font-medium text-foreground hover:text-primary transition-colors">HOME</a>
+                    <a href="#" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">ABOUT US</a>
+                    <a href="#" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">COURSES</a>
+                    <a href="#" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">ACTIVITIES</a>
+                    <a href="#" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">NEWS</a>
+                    <a href="#" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">DONATE</a>
+                    <a href="#" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">STUDENT FEEDBACK</a>
+                    <a href="#" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">CONTACT</a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center justify-center py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+                    <div class="text-center mb-8">
+                        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                            Welcome to <span class="text-primary">ISB MedSociety</span>
+                        </h1>
+                        <div class="flex items-center justify-center space-x-4 mb-6">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center">
+                                <i class="fas fa-user-md text-primary text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <!-- Group photo of medical students -->
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" 
+                             alt="Medical students studying together" 
+                             class="w-full h-32 object-cover rounded-full border-4 border-primary/20">
+                        
+                        <!-- Healthcare professionals in hospital setting -->
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200" 
+                             alt="Healthcare professionals collaborating" 
+                             class="w-full h-32 object-cover rounded-full border-4 border-primary/20">
+                        
+                        <!-- Medical students in workshop setting -->
+                        <img src="https://pixabay.com/get/g8d96660dcba93d34c94eb983ce28e425b0a9b3c24dd554d40641dbe9921082983299ead43585795a303cfa122256a593ebe0ef2cf38bb86d3001082491bb49df_1280.jpg" 
+                             alt="Medical students in workshop" 
+                             class="w-full h-32 object-cover rounded-full border-4 border-primary/20">
+                    </div>
+                    
+                    <div class="text-center">
+                        <p class="text-lg text-muted-foreground italic">
+                            "Our mission is to educate the public on diseases and advocate for healthcare equity everywhere."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-20 bg-background">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Our <span class="bg-gradient-to-r from-primary to-cyan-500 bg-clip-text text-transparent">Mission</span></h2>
+                <p class="text-lg text-muted-foreground italic max-w-4xl mx-auto">
+                    "Our mission is to educate the public on diseases and advocate for healthcare equity everywhere."
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Healthcare Education -->
+                <div class="mission-box-1 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-slate-700">Healthcare Education</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Providing comprehensive medical education and raising awareness about diseases and health conditions in our community.
+                    </p>
+                </div>
+                
+                <!-- Healthcare Equity -->
+                <div class="mission-box-2 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-balance-scale text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-slate-700">Healthcare Equity</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Advocating for equal access to healthcare services and breaking down barriers to medical treatment for all.
+                    </p>
+                </div>
+                
+                <!-- Global Impact -->
+                <div class="mission-box-3 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-globe text-teal-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-slate-700">Global Impact</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Working towards a world where quality healthcare is accessible to everyone, regardless of location or background.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="py-20 bg-muted">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Our <span class="bg-gradient-to-r from-primary to-cyan-500 bg-clip-text text-transparent">Programs</span></h2>
+                <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    Empowering students with medical knowledge and practical healthcare experience
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                <!-- Clinical Skills Workshop -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <!-- Medical students practicing clinical skills -->
+                    <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" 
+                         alt="Medical students practicing clinical skills" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg mb-2 text-foreground">Clinical Skills Workshop</h3>
+                        <p class="text-sm text-muted-foreground mb-4">First on the scene</p>
+                        <p class="text-sm text-muted-foreground mb-6">
+                            Hands-on training in basic medical procedures and patient care techniques.
+                        </p>
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Disease Awareness Campaigns -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <!-- Healthcare professionals giving presentation -->
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" 
+                         alt="Healthcare professionals giving presentation" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg mb-2 text-foreground">Disease Awareness Campaigns</h3>
+                        <p class="text-sm text-muted-foreground mb-4">Fundraising events</p>
+                        <p class="text-sm text-muted-foreground mb-6">
+                            Initiatives to raise funds and awareness for health organizations.
+                        </p>
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Hospital Volunteering -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <!-- Medical students volunteering at hospital -->
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" 
+                         alt="Medical students volunteering at hospital" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg mb-2 text-foreground">Hospital Volunteering</h3>
+                        <p class="text-sm text-muted-foreground mb-4">Donation & charity</p>
+                        <p class="text-sm text-muted-foreground mb-6">
+                            Donations to charitable organizations or hospitals.
+                        </p>
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Medical Research Projects -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <!-- Medical research laboratory setting -->
+                    <img src="https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" 
+                         alt="Medical research laboratory setting" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg mb-2 text-foreground">Medical Research Projects</h3>
+                        <p class="text-sm text-muted-foreground mb-4">Social media page</p>
+                        <p class="text-sm text-muted-foreground mb-6">
+                            Student-made short videos exploring current medical topics, with the aim to improve public health.
+                        </p>
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-20 bg-background">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Latest News</h2>
+                <p class="text-lg text-muted-foreground">
+                    Stay updated with our latest activities and medical initiatives
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Health Fair 2024 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                        <!-- Medical conference or health fair setting -->
+                        <img src="https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" 
+                             alt="Annual health fair with medical professionals" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-foreground">Health Fair 2024</h3>
+                        <h4 class="text-lg font-medium mb-3 text-foreground">Annual Health Fair Success</h4>
+                        <p class="text-muted-foreground mb-6">
+                            Our 2024 Health Fair attracted over 500 participants, providing free health screenings and medical consultations to the community.
+                        </p>
+                        <button class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                            Read more
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Global Health Initiative -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                        <!-- International healthcare collaboration -->
+                        <img src="https://images.unsplash.com/photo-1584432743501-7d5c27a39189?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" 
+                             alt="International healthcare collaboration meeting" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-foreground">Global Health Initiative</h3>
+                        <h4 class="text-lg font-medium mb-3 text-foreground">New Partnership Announced</h4>
+                        <p class="text-muted-foreground mb-6">
+                            MedSo partners with international healthcare organizations to expand our global health advocacy programs.
+                        </p>
+                        <button class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                            Read more
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300 py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Menu -->
+                <div>
+                    <h3 class="text-white font-semibold mb-6">MENU</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">About us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Courses</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Activities</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">News</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Donate</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Student Feedback</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-white font-semibold mb-6">CONTACT</h3>
+                    <div class="space-y-3">
+                        <p>📧 contact@isbmedsociety.org</p>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="hover:text-white transition-colors">
+                                <i class="fab fa-facebook text-xl"></i>
+                            </a>
+                            <a href="#" class="hover:text-white transition-colors">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="hover:text-white transition-colors">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="hover:text-white transition-colors">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Organization -->
+                <div>
+                    <h3 class="text-white font-semibold mb-6">ORGANIZATION</h3>
+                    <p class="leading-relaxed">
+                        ISB is a student-led organization striving to provide equal access of medical and programming knowledge to all students.
+                    </p>
+                </div>
+                
+                <!-- Medical Society Logo -->
+                <div>
+                    <h3 class="text-white font-semibold mb-6">MEDICAL SOCIETY (ISB)</h3>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-user-md text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-white font-semibold">ISB</div>
+                            <div class="text-sm">MedSociety</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-700 mt-12 pt-8 text-center">
+                <p>&copy; 2024 ISB Medical Society. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add mobile menu functionality
+        const mobileMenuButton = document.querySelector('.md\\:hidden button');
+        const navigation = document.querySelector('nav');
+        
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                // TODO: Implement mobile menu toggle functionality
+                console.log('Mobile menu clicked');
+            });
+        }
+
+        // Add card hover effects
+        document.querySelectorAll('.hover\\:shadow-xl').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        console.log('ISB Medical Society website loaded successfully!');
+    </script>
+</body>
+</html>

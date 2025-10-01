@@ -1,0 +1,749 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISB Medical Society - Empowering Future Healthcare Leaders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    popover: {
+                        DEFAULT: "var(--popover)",
+                        foreground: "var(--popover-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                }
+            },
+            fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+            }
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+    :root {
+        --background: hsl(0 0% 100%);
+        --foreground: hsl(222.2 84% 4.9%);
+        --card: hsl(0 0% 100%);
+        --card-foreground: hsl(222.2 84% 4.9%);
+        --popover: hsl(0 0% 100%);
+        --popover-foreground: hsl(222.2 84% 4.9%);
+        --primary: hsl(221.2 83.2% 53.3%);
+        --primary-foreground: hsl(210 40% 98%);
+        --secondary: hsl(210 40% 80%);
+        --secondary-foreground: hsl(222.2 47.4% 11.2%);
+        --muted: hsl(210 40% 96%);
+        --muted-foreground: hsl(215.4 16.3% 46.9%);
+        --accent: hsl(178 50% 47%);
+        --accent-foreground: hsl(210 40% 98%);
+        --destructive: hsl(0 84.2% 60.2%);
+        --destructive-foreground: hsl(210 40% 98%);
+        --border: hsl(214.3 31.8% 91.4%);
+        --input: hsl(214.3 31.8% 91.4%);
+        --ring: hsl(221.2 83.2% 53.3%);
+        --radius: 0.5rem;
+    }
+    
+    .carousel-container {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .carousel-slide {
+        display: none;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    .carousel-slide.active {
+        display: block;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    .stat-counter {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--primary);
+    }
+    
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    </style>
+</head>
+<body class="bg-background text-foreground">
+    <!-- @COMPONENT: Header [navigation, logo, mobile menu] -->
+    <header class="bg-card border-b border-border sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-heartbeat text-primary-foreground text-xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold text-foreground">ISB Medical Society</h1>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-foreground hover:text-primary transition-colors font-medium">Home</a>
+                    <a href="#programs" class="text-muted-foreground hover:text-primary transition-colors font-medium">Programs</a>
+                    <a href="#activities" class="text-muted-foreground hover:text-primary transition-colors font-medium">Activities</a>
+                    <a href="#news" class="text-muted-foreground hover:text-primary transition-colors font-medium">News</a>
+                    <a href="#contact" class="text-muted-foreground hover:text-primary transition-colors font-medium">Contact</a>
+                </nav>
+                
+                <button class="md:hidden text-foreground">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- @COMPONENT: HeroCarousel [hero images, navigation, content overlay] -->
+    <section id="home" class="relative">
+        <div class="carousel-container h-[70vh] lg:h-[80vh]">
+            <!-- Slide 1 -->
+            <!-- Medical students in modern classroom setting with technology -->
+            <div class="carousel-slide active relative h-full bg-cover bg-center" style="background-image: linear-gradient(rgba(37, 99, 235, 0.3), rgba(37, 99, 235, 0.3)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080')">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center text-white max-w-4xl px-4">
+                        <h2 class="text-5xl lg:text-6xl font-bold mb-6">Empowering Future Healthcare Leaders</h2>
+                        <p class="text-xl lg:text-2xl mb-8 opacity-90">Join our community of passionate medical students dedicated to advancing healthcare excellence</p>
+                        <button class="bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors">
+                            Join Our Society
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <!-- Healthcare professionals collaborating in modern hospital environment -->
+            <div class="carousel-slide relative h-full bg-cover bg-center" style="background-image: linear-gradient(rgba(20, 184, 166, 0.3), rgba(20, 184, 166, 0.3)), url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080')">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center text-white max-w-4xl px-4">
+                        <h2 class="text-5xl lg:text-6xl font-bold mb-6">Excellence in Medical Education</h2>
+                        <p class="text-xl lg:text-2xl mb-8 opacity-90">Comprehensive programs designed to build tomorrow's healthcare professionals</p>
+                        <button class="bg-white text-accent px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors">
+                            Explore Programs
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Carousel Navigation -->
+        <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-colors" onclick="previousSlide()">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-colors" onclick="nextSlide()">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <!-- Slide Indicators -->
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            <button class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity" onclick="goToSlide(0)"></button>
+            <button class="w-3 h-3 rounded-full bg-white opacity-100 hover:opacity-100 transition-opacity" onclick="goToSlide(1)"></button>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroCarousel -->
+
+    <!-- @COMPONENT: MissionImpact [statistics, achievements, mission statement] -->
+    <section class="py-20 bg-muted">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-foreground mb-6">Our Mission & Impact</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    The ISB Medical Society is dedicated to fostering a community of aspiring healthcare professionals, 
+                    providing educational resources, volunteer opportunities, and a platform for collaboration and growth.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="text-center">
+                    <div class="stat-counter mb-4" data-mock="true">500+</div>
+                    <h3 class="text-xl font-semibold text-foreground mb-2">Active Members</h3>
+                    <p class="text-muted-foreground">Passionate students across all medical disciplines</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-counter mb-4" data-mock="true">50+</div>
+                    <h3 class="text-xl font-semibold text-foreground mb-2">Programs Offered</h3>
+                    <p class="text-muted-foreground">Comprehensive educational and training programs</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-counter mb-4" data-mock="true">1000+</div>
+                    <h3 class="text-xl font-semibold text-foreground mb-2">Lives Impacted</h3>
+                    <p class="text-muted-foreground">Through our community service initiatives</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: MissionImpact -->
+
+    <!-- @COMPONENT: ProgramsSection [program cards, descriptions, enrollment info] -->
+    <section id="programs" class="py-20 bg-background">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-foreground mb-6">Our Programs</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Comprehensive medical education programs designed to prepare future healthcare leaders
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Program 1 -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <!-- Medical students studying anatomy with models and textbooks -->
+                    <img src="https://pixabay.com/get/gaf0e7bcf6febf2666714b74ea4df68b644d359b05da3b3d03031311508adc794bff96d8a9909bd95b8bb5731ec758e849aff65da1a3676c02d4c32877fa7e1e1_1280.jpg" alt="Medical students studying anatomy" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Clinical Skills Workshop</h3>
+                        <p class="text-muted-foreground mb-4">Hands-on training in essential clinical procedures and patient care techniques</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-accent font-medium">6 Sessions</span>
+                            <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 2 -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <!-- Medical professionals using advanced diagnostic equipment -->
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Medical equipment and diagnostics" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Medical Technology Seminar</h3>
+                        <p class="text-muted-foreground mb-4">Explore cutting-edge medical technologies and their applications in modern healthcare</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-accent font-medium">4 Sessions</span>
+                            <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 3 -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <!-- Students participating in medical research and lab work -->
+                    <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Medical research laboratory" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Research Methodology</h3>
+                        <p class="text-muted-foreground mb-4">Learn the fundamentals of medical research and evidence-based practice</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-accent font-medium">8 Sessions</span>
+                            <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 4 -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <!-- Healthcare professionals in emergency medical situations -->
+                    <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Emergency medical training" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Emergency Medicine Training</h3>
+                        <p class="text-muted-foreground mb-4">Intensive training in emergency procedures and critical care protocols</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-accent font-medium">12 Sessions</span>
+                            <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 5 -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <!-- Medical students practicing with simulation equipment -->
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Medical simulation training" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Medical Simulation Lab</h3>
+                        <p class="text-muted-foreground mb-4">Practice complex procedures in a safe, controlled simulation environment</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-accent font-medium">10 Sessions</span>
+                            <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 6 -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <!-- Healthcare team discussing patient care and collaboration -->
+                    <img src="https://pixabay.com/get/g090102d074b1367a52c80a8a869d49b905a80f6cfe64c8de9687a2a9905cd78d901076d570ac40c545ae6df2fb417dab2d2961ffd687ce171a622d36f25f4a38_1280.jpg" alt="Medical team collaboration" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Leadership in Healthcare</h3>
+                        <p class="text-muted-foreground mb-4">Develop leadership skills essential for healthcare management and team coordination</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-accent font-medium">5 Sessions</span>
+                            <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ProgramsSection -->
+
+    <!-- @COMPONENT: ActivitiesSection [activity galleries, descriptions, engagement info] -->
+    <section id="activities" class="py-20 bg-muted">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-foreground mb-6">Our Activities</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Engaging activities that build community, enhance learning, and make a positive impact on healthcare
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Activity 1 -->
+                <div class="bg-card rounded-xl overflow-hidden hover-lift">
+                    <!-- Students participating in medical workshop with hands-on training -->
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=300" alt="Medical workshop training" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-foreground mb-3">First Aid Training Workshop</h3>
+                        <p class="text-muted-foreground">Comprehensive first aid certification program for students and community members</p>
+                    </div>
+                </div>
+                
+                <!-- Activity 2 -->
+                <div class="bg-card rounded-xl overflow-hidden hover-lift">
+                    <!-- Medical students volunteering at community health clinic -->
+                    <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=300" alt="Community health volunteer work" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Community Health Outreach</h3>
+                        <p class="text-muted-foreground">Volunteer programs serving underserved communities with basic healthcare services</p>
+                    </div>
+                </div>
+                
+                <!-- Activity 3 -->
+                <div class="bg-card rounded-xl overflow-hidden hover-lift">
+                    <!-- Medical conference with guest speakers and networking -->
+                    <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=300" alt="Medical conference presentation" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Guest Speaker Series</h3>
+                        <p class="text-muted-foreground">Regular presentations by leading healthcare professionals and medical experts</p>
+                    </div>
+                </div>
+                
+                <!-- Activity 4 -->
+                <div class="bg-card rounded-xl overflow-hidden hover-lift">
+                    <!-- Medical students studying together in collaborative environment -->
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=300" alt="Medical students collaborative study" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Study Groups & Mentorship</h3>
+                        <p class="text-muted-foreground">Peer-to-peer learning programs and senior student mentorship opportunities</p>
+                    </div>
+                </div>
+                
+                <!-- Activity 5 -->
+                <div class="bg-card rounded-xl overflow-hidden hover-lift">
+                    <!-- Healthcare team participating in medical mission or charity work -->
+                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=300" alt="Medical mission and charity work" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Medical Missions</h3>
+                        <p class="text-muted-foreground">International and domestic medical mission trips providing healthcare to underserved areas</p>
+                    </div>
+                </div>
+                
+                <!-- Activity 6 -->
+                <div class="bg-card rounded-xl overflow-hidden hover-lift">
+                    <!-- Students at medical equipment demonstration or technology showcase -->
+                    <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=300" alt="Medical technology demonstration" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Medical Equipment Expo</h3>
+                        <p class="text-muted-foreground">Annual showcase of the latest medical technologies and equipment innovations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ActivitiesSection -->
+
+    <!-- @COMPONENT: NewsSection [news articles, previews, read more links] -->
+    <section id="news" class="py-20 bg-background">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-foreground mb-6">Latest News</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Stay updated with the latest developments, achievements, and opportunities in our medical society
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- News Article 1 -->
+                <article class="bg-card rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <!-- Medical students participating in hands-on workshop -->
+                    <img src="https://pixabay.com/get/gda2031ea2e88a5a15fd4537a8b6d1b38309fb172d4ffce44561f9f0d81d5ab8bf9abb2ce0c290756fe29812fb4237cc709a4f6be9ee08d582f73a6af86549c3f_1280.jpg" alt="Medical workshop in progress" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-muted-foreground mb-3">
+                            <i class="far fa-calendar mr-2"></i>
+                            <span data-mock="true">December 15, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Advanced CPR Certification Workshop Success</h3>
+                        <p class="text-muted-foreground mb-4">Over 150 students completed our comprehensive CPR certification program, enhancing their emergency response skills.</p>
+                        <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- News Article 2 -->
+                <article class="bg-card rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <!-- Healthcare professionals at medical conference or seminar -->
+                    <img src="https://pixabay.com/get/g20e32af2bd48019d11aedfae7975c69cc45c6126d70e770ee35eea2a107e491d8d09f2bc3a6aab82d4b68c43bc14cc258e35322b1d26b30d29b878d861a06734_1280.jpg" alt="Medical conference presentation" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-muted-foreground mb-3">
+                            <i class="far fa-calendar mr-2"></i>
+                            <span data-mock="true">December 10, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Dr. Sarah Chen Delivers Keynote on Future Medicine</h3>
+                        <p class="text-muted-foreground mb-4">Renowned cardiologist discusses innovations in personalized medicine and AI-driven healthcare solutions.</p>
+                        <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- News Article 3 -->
+                <article class="bg-card rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <!-- Medical students doing community volunteer work -->
+                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=300" alt="Community health volunteer activity" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-muted-foreground mb-3">
+                            <i class="far fa-calendar mr-2"></i>
+                            <span data-mock="true">December 5, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Community Health Fair Reaches 500+ Families</h3>
+                        <p class="text-muted-foreground mb-4">Our monthly health screening initiative continues to make a positive impact in underserved communities.</p>
+                        <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- News Article 4 -->
+                <article class="bg-card rounded-xl shadow-lg overflow-hidden hover-lift">
+                    <!-- Medical research laboratory or equipment -->
+                    <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=300" alt="Medical research laboratory" class="w-full h-48 object-cover" data-mock-image="true" />
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-muted-foreground mb-3">
+                            <i class="far fa-calendar mr-2"></i>
+                            <span data-mock="true">November 28, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-foreground mb-3">Student Research Projects Win Regional Competition</h3>
+                        <p class="text-muted-foreground mb-4">Three ISB Medical Society research teams place in top positions at the Southeast Medical Student Research Symposium.</p>
+                        <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
+                    View All News
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: NewsSection -->
+
+    <!-- @COMPONENT: ContactSection [contact form, information, social links] -->
+    <section id="contact" class="py-20 bg-muted">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-foreground mb-6">Get In Touch</h2>
+                    <p class="text-xl text-muted-foreground">
+                        Ready to join our community of future healthcare leaders? Contact us to learn more about membership and opportunities.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div class="bg-card rounded-xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-semibold text-foreground mb-6">Send us a Message</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-foreground mb-2">Full Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your full name" data-mock="true" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-foreground mb-2">Email Address</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="your.email@example.com" data-mock="true" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-foreground mb-2">Subject</label>
+                                <select class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent" data-mock="true">
+                                    <option>Membership Inquiry</option>
+                                    <option>Program Information</option>
+                                    <option>Volunteer Opportunities</option>
+                                    <option>General Question</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-foreground mb-2">Message</label>
+                                <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Tell us how we can help you..." data-mock="true"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-foreground mb-6">Contact Information</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-4">
+                                    <div class="bg-primary/10 p-3 rounded-lg">
+                                        <i class="fas fa-map-marker-alt text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-foreground">Address</h4>
+                                        <p class="text-muted-foreground" data-mock="true">123 Medical Center Drive<br>Bangkok, Thailand 10330</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <div class="bg-primary/10 p-3 rounded-lg">
+                                        <i class="fas fa-phone text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-foreground">Phone</h4>
+                                        <p class="text-muted-foreground" data-mock="true">+66 2 123-4567</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <div class="bg-primary/10 p-3 rounded-lg">
+                                        <i class="fas fa-envelope text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-foreground">Email</h4>
+                                        <p class="text-muted-foreground" data-mock="true">info@isbmedsociety.org</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-2xl font-semibold text-foreground mb-6">Follow Us</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-primary/10 p-3 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-primary/10 p-3 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-primary/10 p-3 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="bg-primary/10 p-3 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-card rounded-xl p-6 shadow-lg">
+                            <h4 class="font-semibold text-foreground mb-3">Office Hours</h4>
+                            <div class="space-y-2 text-sm text-muted-foreground">
+                                <div class="flex justify-between">
+                                    <span>Monday - Friday</span>
+                                    <span data-mock="true">9:00 AM - 6:00 PM</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Saturday</span>
+                                    <span data-mock="true">10:00 AM - 4:00 PM</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Sunday</span>
+                                    <span data-mock="true">Closed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- @COMPONENT: Footer [copyright, links, social media] -->
+    <footer class="bg-card border-t border-border py-12">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-heartbeat text-primary-foreground text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground">ISB Medical Society</h3>
+                    </div>
+                    <p class="text-muted-foreground mb-4 max-w-md">
+                        Empowering the next generation of healthcare leaders through education, community service, and professional development.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-foreground mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-muted-foreground">
+                        <li><a href="#home" class="hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="#programs" class="hover:text-primary transition-colors">Programs</a></li>
+                        <li><a href="#activities" class="hover:text-primary transition-colors">Activities</a></li>
+                        <li><a href="#news" class="hover:text-primary transition-colors">News</a></li>
+                        <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-foreground mb-4">Resources</h4>
+                    <ul class="space-y-2 text-muted-foreground">
+                        <li><a href="#" class="hover:text-primary transition-colors">Membership</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Events</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Volunteer</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Scholarships</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Alumni</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
+                <p data-mock="true">&copy; 2023 ISB Medical Society. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+    (function() {
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.absolute.bottom-6 button');
+        
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            indicators.forEach((indicator, i) => {
+                indicator.style.opacity = i === index ? '1' : '0.5';
+            });
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+        }
+        
+        // Make functions globally accessible
+        window.nextSlide = nextSlide;
+        window.previousSlide = previousSlide;
+        window.goToSlide = goToSlide;
+        
+        // Auto-advance carousel
+        setInterval(nextSlide, 5000);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Form submission handler (mock)
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // TODO: Implement form submission logic
+                alert('Thank you for your message! We will get back to you soon.');
+            });
+        }
+        
+        console.log('ISB Medical Society website loaded successfully!');
+    })();
+    </script>
+</body>
+</html>
