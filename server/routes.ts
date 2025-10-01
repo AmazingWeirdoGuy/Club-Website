@@ -4,7 +4,6 @@ import { storage } from "./storage";
 import { insertProgramSchema, insertNewsSchema, insertMemberSchema, insertMemberClassSchema, insertHeroImageSchema, insertAdminUserSchema } from "@shared/schema";
 import { processImage, cleanupOldImages } from "./imageProcessor";
 import { randomUUID } from 'crypto';
-import { sendContactEmail } from "./email";
 import { getSession } from "./replitAuth";
 import { z } from "zod";
 
