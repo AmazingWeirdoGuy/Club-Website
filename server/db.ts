@@ -1,15 +1,20 @@
-import { Pool, neonConfig } from '@neondatabase/serverless';
-import { drizzle } from 'drizzle-orm/neon-serverless';
-import ws from "ws";
-import * as schema from "@shared/schema";
+// server/db.ts
+import { Pool } from "pg";
+import { drizzle } from "drizzle-orm/node-postgres";
+import * as schema from "@shared/schema"; // keep if you have this alias; otherwise remove and use drizzle(pool)
 
-neonConfig.webSocketConstructor = ws;
+const connectionString = process.env.DATABASE_URL;
+if (!connectionString) throw new Error("DATABASE_URL is not set");
 
-if (!process.env.DATABASE_URL) {
-  throw new Error(
-    "DATABASE_URL must be set. Did you forget to provision a database?",
-  );
+const pool = new Pool({
+  connectionString,
+  ssl: { rejectUnauthorized: false }, // Render PG typically needs SSL
+});
+
+export const db = drizzle(pool, { schema });
+
+export async function pingDb(): Promise<boolean> {
+  const client = await pool.connect();
+  try { await client.query("select 1"); return true; }
+  finally { client.release(); }
 }
-
-export const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-export const db = drizzle({ client: pool, schema });
